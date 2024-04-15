@@ -19,12 +19,11 @@ const ResourceCard = ({resources,downloadResource}) => {
   {resources.map((resource) => (
     <div
       key={resource.id}
-      className="bg-white rounded-lg shadow p-3 h-fit m-4 "
+      className="bg-white rounded-lg flex flex-col gap-4 space-y-2 justify-between shadow p-3 h-[200px] m-4 "
       style={{ width: "260px", textAlign: "center"}}
     >
       <h3 className="text-2xl  font-bold p-0 mb-2 text-start" style={{fontSize:"20px"}}>{resource.title}</h3>
       <p className="text-1xl font-semibold p-0 pl-2 mb-2">Grade: {resource.grade}</p>
-      <p className="text-1xl font-semibold p-0 pl-2 mb-2">Subject: {resource.subject}</p>
       <button
     
         style={{

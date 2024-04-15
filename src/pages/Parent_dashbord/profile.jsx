@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../components/AuthContext';
 import FadeLoader from 'react-spinners/FadeLoader';
 import { AccountCircle } from '@mui/icons-material';
-
+import ParentNavigation from '../../components/parentNavigation';
 function Profile() {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
@@ -27,7 +27,8 @@ function Profile() {
 
   return (
     <>
-      <div className="max-w-lg mx-auto mt-8 bg-white shadow-md rounded-lg">
+    <ParentNavigation />
+      <div className="max-w-lg mx-auto mt-[100px] bg-white shadow-md rounded-lg">
         <div className='bg-blue-400 flex flex-col align-middle'>
           <div className="flex justify-center">
             <AccountCircle fontSize='extraLarge' sx={{ fontSize: '120px' }} />

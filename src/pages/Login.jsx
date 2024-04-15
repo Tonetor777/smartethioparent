@@ -33,7 +33,7 @@ function Login() {
   };
 
   return (
-    <section className="flex flex-col md:flex-row justify-center mt-20">
+    <section className="flex flex-col md:flex-row justify-center mt-20 bg-slate-100 w-[90%] p-5 mx-auto">
       <div className="flex flex-col rounded-lg w-full md:w-96 md:h-64 mb-8 md:mb-0 md:mr-8">
         <h2 className="text-black text-2xl font-bold mb-4 md:mb-9 pl-0">Login</h2>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-3">

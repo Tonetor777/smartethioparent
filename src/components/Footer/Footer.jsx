@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0052B4] text-white py-8 w-full">
+    <footer className="bg-[#0052B4] text-white py-8 w-full absolute bottom-0">
       <div className="container mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-x-4 gap-y-2 md:gap-y-0 justify-center items-center mt-4 md:mt-0 text-center">
           {[

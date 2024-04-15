@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { FadeLoader } from 'react-spinners';
 import { AuthContext } from '../../components/AuthContext';
 import Task from '../../components/Task';
-import ResponsiveAppBar from '../../components/NabBar';
 import { FilterListTwoTone } from '@mui/icons-material';
+import ParentNavigation from '../../components/parentNavigation';
 
 import Footer from '../../components/Footer/Footer';
 function Assignments() {
@@ -47,8 +47,8 @@ function Assignments() {
 
   return (
     <>
-    <div>
-      <ResponsiveAppBar />
+    <div className='relative flex flex-col min-h-screen '>
+      <ParentNavigation />
       {loading ? (
         <div className="flex justify-center items-center h-screen">
           <FadeLoader color="#36d7b7" />
@@ -94,8 +94,8 @@ function Assignments() {
         </div>
       )}
 
-    </div>
     < Footer />
+    </div>
     </>
   );
 }

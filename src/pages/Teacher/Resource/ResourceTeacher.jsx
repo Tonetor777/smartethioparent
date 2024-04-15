@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ResourceCard from "../../Admin/Resource/ResourceCard";
-
+import TeacherNavigation from "../../../components/TeacherNavigation";
 export const ResourceTeacher = () => {
   const [resources, setResources] = useState([]);
 
@@ -16,7 +16,7 @@ export const ResourceTeacher = () => {
 
   useEffect(() => {
     fetchResources();
-  }, [resources]);
+  }, []);
   const downloadResource = async (resourceId, resourceTitle) => {
     try {
       const downloadUrl = `http://127.0.0.1:8000/api/resource/${resourceId}/download/`;
@@ -37,7 +37,13 @@ export const ResourceTeacher = () => {
     }
   };
   return (
-    <div className="w-full h-auto bg-gray-100 min-h-screen text-gray-800 text-customText font-sans ">
+    <>
+    < TeacherNavigation />
+          <div>
+            <h1 className="text-center text-3xl text-blue-700 font-mono font-bold underline mb-16 mt-[100px]">Resources</h1>
+          </div>
+      
+    <div className="h-auto bg-gray-100 min-h-screen text-gray-800 text-customText font-sans w-[70%] mx-auto">
       {resources.length > 0 ? (
         <div>
           <ResourceCard
@@ -49,6 +55,7 @@ export const ResourceTeacher = () => {
         <p>No resources found.</p>
       )}
     </div>
+    </>
   );
 };
 export default ResourceTeacher;

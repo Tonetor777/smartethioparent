@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Footer from '../../components/Footer/Footer';
 import { FadeLoader } from 'react-spinners';
 import { AuthContext } from '../../components/AuthContext';
 import Task from '../../components/Task';
-import ResponsiveAppBar from '../../components/NabBar';
+import ParentNavigation from '../../components/parentNavigation';
 import { FilterListTwoTone } from '@mui/icons-material';
 function TasksPage() {
   const { user } = useContext(AuthContext);
@@ -45,13 +46,13 @@ function TasksPage() {
 
   return (
     <div>
-      <ResponsiveAppBar />
+      <ParentNavigation />
       {loading ? (
         <div className="flex justify-center items-center h-screen">
           <FadeLoader color="#36d7b7" />
         </div>
       ) : (
-        <div className='mt-10 w-[80%] mx-auto'>
+        <div className='mt-[100px] w-[80%] mx-auto'>
           <div className="mb-4 text-right">
             <label htmlFor="" className='text-2xl mx-2 font-semibold'>Filter  <FilterListTwoTone /> </label>  
             <label htmlFor="subjectFilter" className="mr-2 text-lg">
@@ -90,6 +91,7 @@ function TasksPage() {
           </div>
         </div>
       )}
+      < Footer />
     </div>
   );
 }

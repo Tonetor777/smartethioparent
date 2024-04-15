@@ -1,22 +1,19 @@
 import React,{useContext, useState, useEffect} from "react";
-// import useFetchAssignments from "../../../components/Fetch/useFetchAssignments";
-import useFetchHomework from "../../../components/Fetch/useFetchHomeWork";
-// import useFetchSections from "../../../components/Fetch/section";
-import WelcomeSection from "../../../components/Fetch/Welcome";
-// import useFetchRecentMessages from "../components/Fetch/useFetchrecentMessages";
+import {useNavigate} from "react-router-dom"
 import Lottie from "lottie-react";
 import animationData from "../../../assets/teacher.json";
 import { AuthContext } from "../../../components/AuthContext";
 import FadeLoader from 'react-spinners/FadeLoader'
 import TeacherNavigation from "../../../components/TeacherNavigation";
+import { Link } from "react-router-dom";
 
 
-// import Anouncment from "./anoucment page";
+
 function TeacherHomePage() {
   const [loading, setLoading] = useState(true);
   const {user}= useContext(AuthContext)
-  
-
+  console.log(user)
+  const navigate = useNavigate()
 useEffect(() => {
   if (user !== null) {
     setLoading(false);
@@ -58,7 +55,7 @@ if (loading) {
     <TeacherNavigation/>
 
     <div className="w-full h-full text-gray-800 text-customText font-sans">
-      <div className="container grid grid-rows-4-auto gap-5 p-5 mx-auto max-w-none">
+      <div className="container grid grid-rows-4-auto gap-5 p-5 mx-auto max-w-none pt-12">
      
        <nav className="nav"></nav>
         <div className="welcome-sec flex shadow-md border-b border-gray-300 bg-[#008DDA] rounded-lg">
@@ -89,26 +86,27 @@ if (loading) {
 
           {/* <div>Homepage</div> */}
 
-          <div className="cont flex gap-20">
+          <div className="cont flex gap-20 mr-14-10">
           <div className="section bg-white rounded-lg shadow p-5 w-[270px] h-fit">
             <h2 className="sec-title text-2xl font-semibold text-blue-500 mb-4">
               Sections Taught
             </h2>
             {classes && classes.length > 0 ? (
-              <ul>
-                {classes.map((cls) => (
-                  <li
-                    key={cls.id}
-                    className="bg-gray-100 mb-2 p-4 rounded-md border-l-4 border-blue-800"
-                  >
-                    Grade: {cls.grade.grade}, Section: {cls.section.section},{" "}
-                    Subject: {cls.subject.subject}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No sections to display.</p>
-            )}
+            <ul>
+              {classes.map((cls) => (
+                <li
+                  key={cls.id}
+                  className="bg-gray-100 mb-2 p-4 rounded-md cursor-pointer hover:bg-gray-200"
+                  onClick={() => navigate(`/teacher/students/${cls.grade.grade}/${cls.section.section}`, { state: { grade: cls.grade.grade } })} 
+                >
+                  Grade: {cls.grade.grade}, Section: {cls.section.section},{" "}
+                  Subject: {cls.subject.subject}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No sections to display.</p>
+          )}
           </div>
           <section>
         <div className="resources bg-white rounded-lg shadow p-5 w-[400px]">

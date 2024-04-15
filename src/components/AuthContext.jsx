@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
     async function fetchTeacherInfo(id) {
       const URL = import.meta.env.VITE_API_URL
         try {
-            const response = await axios.get(`${URL}/api/teachers/?id=${id}`);
+            const response = await api.get(`${URL}/api/teachers/?id=${id}`);
             console.log(response.data)
             return response.data;
 

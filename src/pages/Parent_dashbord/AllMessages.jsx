@@ -3,10 +3,9 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../components/AuthContext";
 import FadeLoader from 'react-spinners/FadeLoader'
 import Message from '../../components/Message';
-import ResponsiveAppBar from '../../components/NabBar';
 import Footer from '../../components/Footer/Footer';
 import { AccountCircle } from '@mui/icons-material';
-
+import ParentNavigation from '../../components/parentNavigation';
 
 function  AllMessages () {
   const [loading, setLoading] = useState(true);
@@ -37,10 +36,10 @@ function  AllMessages () {
 
 
   return (
-    <>
-      <ResponsiveAppBar />
-       <div className='  mt-6 bg-blue-50 sm:w-[90%] md:w-[60%] lg:w-[50%] mx-auto border-solid border-gray-500'>
-      <h1 className='text-center text-3xl font-bold mb-5 bg-slate-500 py-5' >  <AccountCircle  fontSize='large'/>  {user.user.first_name} {user.user.last_name}</h1>
+    <div>
+      <ParentNavigation />
+       <div className='  mt-[80px]  w-[90%] md:w-[60%] lg:w-[50%] mx-auto border-solid border-gray-500 bg-blue-50 h-[750px] overflow-y-auto mb-20'>
+      <h1 className='text-center text-3xl font-bold mb-5 bg-slate-500 py-5 sm:text-xl' >  <AccountCircle  fontSize='large'/>  {user.user.first_name} {user.user.last_name}</h1>
         <div className=''>
           {Messages && Messages.length > 0 ? (
             Messages.map((message, index) => (
@@ -51,8 +50,7 @@ function  AllMessages () {
           )}
         </div>
        </div>
-        <Footer />
-    </>
+    </div>
   )
 }
 

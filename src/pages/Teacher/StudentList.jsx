@@ -1,11 +1,19 @@
-import React, { useState, useEffect , useContext } from 'react';
+import React, { useState, useEffect , useContext  } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import api from '../../api';
 import FadeLoader from 'react-spinners/FadeLoader'
 import { AuthContext } from '../../components/AuthContext';
 import MessageModal from './MessageModal';
-function StudentList({ grade, section }) {
+import TeacherNavigation from '../../components/TeacherNavigation';
+function StudentList() {
+  const { grade } = useParams();
+  const { section } = useParams();
+  console.log(grade)
+  console.log(section)
+
+
 
 const [loading, setLoading] = useState(true);
 const { user } = useContext(AuthContext);
@@ -60,7 +68,8 @@ useEffect(() => {
 
   return (
     <div>
-    <h2 className="text-3xl font-bold font-mono mb-9 mt-8 text-blue-600 text-center">  Grade-{grade} Section-{section} Student List</h2>
+      <TeacherNavigation />
+    <h2 className="text-3xl font-bold font-mono mb-9 mt-8 text-blue-600 text-center md:mt-[100px]">  Grade-{grade} Section-{section} Student List</h2>
     <div className="overflow-x-auto w-[80%] mx-auto">
       <table className="table-auto w-full">
         <thead>

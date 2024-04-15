@@ -6,6 +6,8 @@ import { AccountCircle } from "@mui/icons-material";
 import api from "../../api";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
+
+import TeacherNavigation from "../../components/TeacherNavigation";
 function Chat() {
   const { parentId } = useParams();
   const [loading, setLoading] = useState(true);
@@ -45,6 +47,7 @@ function Chat() {
 
   return (
     <>
+    <TeacherNavigation />
       <h1 className="md:text-3xl sm:text-2xl text-center font-bold text-blue-900 my-10">
         {" "}
         Messages{" "}

@@ -8,7 +8,7 @@ import Task from "../../../components/Task";
 import ExamCard from "../../../components/ExamCard";
 import FadeLoader from "react-spinners/FadeLoader";
 import Footer from "../../../components/Footer/Footer";
-import AdminNav from "../../../components/AdminNav";
+import ParentNavigation from "../../../components/parentNavigation";
 
 export default function Parents() {
   const [loading, setLoading] = useState(true);
@@ -35,8 +35,7 @@ export default function Parents() {
   const recentMessage = user.recentMessages;
   const tasks = user.parentInfo.children_data[0].tasks;
   const exams = user.parentInfo.children_data[0].exams;
-  const recentHomeworks = tasks.filter((task) => task.type === "homework");
-  const recentAssignments = tasks.filter((task) => task.type === "assignment");
+  
   const currentDate = new Date();
   const upcomingExams = exams.filter((exam) => {
     const examDate = new Date(exam.exam_date);
@@ -45,9 +44,9 @@ export default function Parents() {
 
   return (
     <>
-      <AdminNav />
-      <div className="flex flex-wrap gap-4 md:h-screen ">
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-solid rounded-lg shadow-md p-6  w-[100%] mx-auto">
+      <ParentNavigation />
+      <div className="flex flex-wrap gap-4  ">
+        <div className="bg-gradient-to-br from-blue-50 to-blue-500 border border-solid rounded-lg shadow-md p-6  w-[100%] mx-auto pt-[100px]">
           {loading ? (
             <Loading />
           ) : (
@@ -58,7 +57,7 @@ export default function Parents() {
                 className="  9-80 hidden md:block"
               />
               <div className=" h-full">
-                <h1 className="font-bold mb-4 text-blue-800 text-2xl md:text-4xl text-center mb-4">
+                <h1 className="font-bold mb-4 text-blue-800 text-2xl md:text-4xl text-center pt-[10px]">
                   Welcome {parentInfo.first_name} {parentInfo.last_name}
                 </h1>
                 <label className="text-center text-2xl ">
@@ -114,7 +113,7 @@ export default function Parents() {
           <h1 className="text-xl font-bold mb-4 text-purple-800">
             Recent Tasks
           </h1>
-          <div className="md:flex md: gap-6">
+          <div className="md:flex md: gap-6 sm:flex-col">
             {tasks && tasks.length > 0 ? (
               tasks
                 .slice(0, 3)
@@ -124,16 +123,7 @@ export default function Parents() {
             )}
           </div>
         </div>
-
-        {/* <div className="bg-gradient-to-br from-red-200 to-red-300 border border-solid rounded-lg shadow-md p-6 w-full md:w-[calc(50%-16px)]">
-        <h1 className="text-xl font-bold mb-4 text-red-800">Results</h1>
-        <div className="text-right">
-          <a href="#" className="text-blue-500 hover:underline">See more</a>
-        </div>
-      </div> */}
       </div>
-
-      <Footer />
     </>
   );
 }

@@ -18,12 +18,13 @@ import Button from '@mui/material/Button';
 
 const drawerWidth = 240;
 const navItems = [
-  { name: 'Home', link: '/' },
+  { name: 'Home', link: '/parent/home' },
   { name: 'Assignment', link: '/parent/assignment' },
   { name: 'Homework', link: '/parent/homework' },
   { name: 'Resource', link: '/parent/resource' },
   { name: 'Message', link: '/parent/message' },
-  { name: 'Profile', link: '/parent/profile' }
+  { name: 'Profile', link: '/parent/profile' },
+  { name: 'Logout', link: '/logout/' } 
 ];
 
 function ParentNavigation(props) {
@@ -64,7 +65,7 @@ function ParentNavigation(props) {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+            sx={{ mr: 2, display: { sm: 'none' }, color: 'black' }}
           >
             <MenuIcon />
           </IconButton>
